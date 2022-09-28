@@ -1,18 +1,31 @@
 package br.sc.senai.produtos.view;
 
+import br.sc.senai.produtos.controller.PessoaController;
+import br.sc.senai.produtos.model.entities.Funcionario;
+import br.sc.senai.produtos.model.entities.Pessoa;
+
 import javax.swing.*;
 
-public class Login extends JFrame implements Runnable{
+public class Login extends JFrame implements Runnable {
 
+    PessoaController pessoaController = new PessoaController();
 
-
-    private JTextField inputUsuario;
+    private JTextField inputEmail;
     private JPasswordField inputSenha;
     private JButton botaoLogin;
     private JPanel login;
 
-    public Login(){
+    public Login() {
         criarComponentes();
+        botaoLogin.addActionListener(e -> {
+            try {
+                Pessoa pessoa = pessoaController.validaLogin(inputEmail.getText(), inputSenha.getText());
+                dispose();
+                new ListarProdutos(pessoa);
+            } catch (RuntimeException err) {
+                JOptionPane.showMessageDialog(null, err.getMessage());
+            }
+        });
     }
 
     private void criarComponentes() {
@@ -23,8 +36,8 @@ public class Login extends JFrame implements Runnable{
     }
 
     @Override
-    public void run(){
-        if(!isVisible()){
+    public void run() {
+        if (!isVisible()) {
             setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "A janela ja esta aberta");
