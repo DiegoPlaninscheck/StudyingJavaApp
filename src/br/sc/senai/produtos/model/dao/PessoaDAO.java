@@ -30,6 +30,7 @@ public class PessoaDAO {
         } catch (Exception e) {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
+        System.out.println("pessoa");
         throw new RuntimeException("Algo deu ruim");
     }
 

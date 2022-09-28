@@ -32,6 +32,7 @@ public class ProdutoDAO {
         } catch (Exception e) {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
+        System.out.println("produto");
         throw new RuntimeException("Algo deu ruim");
     }
 
