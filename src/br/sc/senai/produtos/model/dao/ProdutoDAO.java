@@ -26,14 +26,13 @@ public class ProdutoDAO {
                 while (resultSet.next()) {
                     listaProdutos.add(extrairObjeto(resultSet));
                 }
+                return listaProdutos;
             } catch (Exception e) {
                 throw new RuntimeException("Erro na execução do comando SQL");
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
-        System.out.println("produto");
-        throw new RuntimeException("Algo deu ruim");
     }
 
     private Produto extrairObjeto(ResultSet resultSet) {
