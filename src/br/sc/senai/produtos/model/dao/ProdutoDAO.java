@@ -3,6 +3,7 @@ package br.sc.senai.produtos.model.dao;
 import br.sc.senai.produtos.model.entities.Produto;
 import br.sc.senai.produtos.model.factory.ConexaoFactory;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,5 +83,26 @@ public class ProdutoDAO {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
         throw new RuntimeException("deu ruim");
+    }
+
+    public void venderProduto(Produto produto, Integer qtdProdutoVender) {
+        if (produto.getQtdEstoque() < qtdProdutoVender) {
+            JOptionPane.showMessageDialog(null, "Falta de produto em estoque!");
+        } else {
+            System.out.println(produto.getQtdEstoque());
+            produto.setQtdEstoque(produto.getQtdEstoque() - qtdProdutoVender);
+            System.out.println(produto.getQtdEstoque());
+            String sqlComando = "update produto set qtdEstoque = " +
+                    produto.getQtdEstoque() + " where idProduto = " + produto.getNumeroProduto();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+                try {
+                    preparedStatement.execute();
+                } catch (Exception e) {
+                    throw new RuntimeException("Erro na execução do comando SQL");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na preparação do comando SQL");
+            }
+        }
     }
 }

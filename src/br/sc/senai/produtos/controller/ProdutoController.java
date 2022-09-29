@@ -19,4 +19,8 @@ public class ProdutoController {
     public Produto selecionarProdutoPorId(int idProduto) {
         return produtoService.selecionarProdutoPorId(idProduto);
     }
+
+    public void venderProduto(Produto produto, Integer qtdProdutoVender) {
+        produtoService.venderProduto(produto, qtdProdutoVender);
+    }
 }

@@ -17,4 +17,8 @@ public class ProdutoService {
     public Produto selecionarProdutoPorId(int idProduto) {
         return new ProdutoDAO().selecionarProdutoPorId(idProduto);
     }
+
+    public void venderProduto(Produto produto, Integer qtdProdutoVender) {
+        new ProdutoDAO().venderProduto(produto, qtdProdutoVender);
+    }
 }

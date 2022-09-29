@@ -36,6 +36,14 @@ public class ListarProdutos extends JFrame {
             if (itemSelecionado != -1) {
                 int idProduto = (Integer) tabelaProdutos.getValueAt(itemSelecionado, 0);
                 Produto produto = produtoController.selecionarProdutoPorId(idProduto);
+                int qtdProdutoVenda = Integer.parseInt(
+                        JOptionPane.showInputDialog(null, "Quantidade que deseja comprar"));
+                try {
+                    produtoController.venderProduto(produto, qtdProdutoVenda);
+                    JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+                } catch (Exception exception) {
+                    throw new RuntimeException(exception.getMessage());
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "É necessario selecionar um item para comprar!");
             }
