@@ -30,6 +30,9 @@ public class ListarProdutos extends JFrame {
             dispose();
             new CadastrarProduto(usuario);
         });
+        comprarProdutoButton.addActionListener(e -> {
+
+        });
     }
 
     private void criarComponentes() {
