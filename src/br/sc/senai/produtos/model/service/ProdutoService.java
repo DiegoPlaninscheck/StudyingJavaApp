@@ -11,7 +11,10 @@ public class ProdutoService {
     }
 
     public void cadastrarProduto(String nome, Double valor, Integer qtdEstoque) {
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        produtoDAO.cadastrarProduto(nome, valor, qtdEstoque);
+        new ProdutoDAO().cadastrarProduto(nome, valor, qtdEstoque);
+    }
+
+    public Produto selecionarProdutoPorId(int idProduto) {
+        return new ProdutoDAO().selecionarProdutoPorId(idProduto);
     }
 }

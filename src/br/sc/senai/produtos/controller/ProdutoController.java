@@ -10,8 +10,13 @@ public class ProdutoController {
         return new ProdutoService().selecionarTodosProdutos();
     }
 
+    ProdutoService produtoService = new ProdutoService();
+
     public void cadastrarProduto(String nome, Double valor, Integer qtdEstoque) {
-        ProdutoService produtoService = new ProdutoService();
         produtoService.cadastrarProduto(nome, valor, qtdEstoque);
+    }
+
+    public Produto selecionarProdutoPorId(int idProduto) {
+        return produtoService.selecionarProdutoPorId(idProduto);
     }
 }

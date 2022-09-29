@@ -4,6 +4,7 @@ import br.sc.senai.produtos.controller.ProdutoController;
 import br.sc.senai.produtos.model.entities.Cliente;
 import br.sc.senai.produtos.model.entities.Funcionario;
 import br.sc.senai.produtos.model.entities.Pessoa;
+import br.sc.senai.produtos.model.entities.Produto;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -31,7 +32,13 @@ public class ListarProdutos extends JFrame {
             new CadastrarProduto(usuario);
         });
         comprarProdutoButton.addActionListener(e -> {
-
+            int itemSelecionado = tabelaProdutos.getSelectedRow();
+            if (itemSelecionado != -1) {
+                int idProduto = (Integer) tabelaProdutos.getValueAt(itemSelecionado, 0);
+                Produto produto = produtoController.selecionarProdutoPorId(idProduto);
+            } else {
+                JOptionPane.showMessageDialog(null, "É necessario selecionar um item para comprar!");
+            }
         });
     }
 

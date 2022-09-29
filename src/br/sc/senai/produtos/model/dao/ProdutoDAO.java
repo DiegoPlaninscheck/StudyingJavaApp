@@ -61,4 +61,26 @@ public class ProdutoDAO {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
     }
+
+    public Produto selecionarProdutoPorId(int idProduto) {
+        String sqlComando = "select * from produto where idProduto = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+            preparedStatement.setInt(1, idProduto);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new Produto(
+                            resultSet.getInt("idProduto"),
+                            resultSet.getInt("qtdEstoque"),
+                            resultSet.getDouble("valorProduto"),
+                            resultSet.getString("nomeProduto")
+                    );
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na execução do comando SQL");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro na preparação do comando SQL");
+        }
+        throw new RuntimeException("deu ruim");
+    }
 }
