@@ -27,7 +27,8 @@ public class ListarProdutos extends JFrame {
             new Login();
         });
         cadastrarProdutoButton.addActionListener(e -> {
-            produtoController.cadastrarProduto();
+            dispose();
+            new CadastrarProduto(usuario);
         });
     }
 

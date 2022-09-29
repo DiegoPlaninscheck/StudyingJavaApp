@@ -9,4 +9,9 @@ public class ProdutoService {
     public Collection<Produto> selecionarTodosProdutos() {
         return new ProdutoDAO().selecionarTodosProdutos();
     }
+
+    public void cadastrarProduto(String nome, Double valor, Integer qtdEstoque) {
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        produtoDAO.cadastrarProduto(nome, valor, qtdEstoque);
+    }
 }

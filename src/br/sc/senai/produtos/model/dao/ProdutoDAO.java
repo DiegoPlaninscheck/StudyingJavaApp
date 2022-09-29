@@ -45,4 +45,20 @@ public class ProdutoDAO {
             throw new RuntimeException("Erro ao extrair objeto!");
         }
     }
+
+    public void cadastrarProduto(String nome, Double valor, Integer qtdEstoque) {
+        String sqlComando = "insert into produto (nomeProduto, valorProduto, qtdEstoque) values (?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+            preparedStatement.setString(1, nome);
+            preparedStatement.setDouble(2, valor);
+            preparedStatement.setInt(3, qtdEstoque);
+            try {
+                preparedStatement.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na execução do comando SQL");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro na preparação do comando SQL");
+        }
+    }
 }
