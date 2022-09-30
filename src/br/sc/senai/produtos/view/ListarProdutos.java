@@ -7,11 +7,10 @@ import br.sc.senai.produtos.model.entities.Pessoa;
 import br.sc.senai.produtos.model.entities.Produto;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 public class ListarProdutos extends JFrame {
     private JTable tabelaProdutos;
-    private JButton sairButton;
+    private JButton voltarButton;
     private JButton cadastrarProdutoButton;
     private JButton comprarProdutoButton;
     private JPanel listaProdutos;
@@ -23,9 +22,13 @@ public class ListarProdutos extends JFrame {
         usuario = pessoa;
         criarComponentes();
 
-        sairButton.addActionListener(e -> {
+        voltarButton.addActionListener(e -> {
             dispose();
-            new Login();
+            if (usuario instanceof Cliente) {
+                new Login();
+            } else {
+                new Menu(usuario);
+            }
         });
         cadastrarProdutoButton.addActionListener(e -> {
             dispose();

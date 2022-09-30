@@ -58,12 +58,12 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="55b4e" class="javax.swing.JButton" binding="sairButton" default-binding="true">
+          <component id="55b4e" class="javax.swing.JButton" binding="voltarButton">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Sair"/>
+              <text value="Voltar"/>
             </properties>
           </component>
           <component id="ae8ba" class="javax.swing.JButton" binding="cadastrarProdutoButton" default-binding="true">

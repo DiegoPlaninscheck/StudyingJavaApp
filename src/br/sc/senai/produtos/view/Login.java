@@ -1,7 +1,9 @@
 package br.sc.senai.produtos.view;
 
 import br.sc.senai.produtos.controller.PessoaController;
+import br.sc.senai.produtos.model.entities.Cliente;
 import br.sc.senai.produtos.model.entities.Funcionario;
+import br.sc.senai.produtos.model.entities.Gerente;
 import br.sc.senai.produtos.model.entities.Pessoa;
 
 import javax.swing.*;
@@ -21,7 +23,11 @@ public class Login extends JFrame implements Runnable {
             try {
                 Pessoa pessoa = pessoaController.validaLogin(inputEmail.getText(), inputSenha.getText());
                 dispose();
-                new ListarProdutos(pessoa);
+                if(pessoa instanceof Cliente){
+                    new ListarProdutos(pessoa);
+                } else if(pessoa instanceof Funcionario || pessoa instanceof Gerente){
+                    new Menu(pessoa);
+                }
             } catch (RuntimeException err) {
                 JOptionPane.showMessageDialog(null, err.getMessage());
             }

@@ -45,4 +45,23 @@ public class PessoaDAO {
             throw new RuntimeException("Erro ao extrair objeto");
         }
     }
+
+    public void cadastrarPessoa(String nomePessoa, String cpfPessoa, String emailPessoa, String senhaPessoa, int tipoPessoa) {
+        String sqlComando = "insert into pessoa " +
+                "(nomePessoa, emailPessoa, cpfPessoa, senhaPessoa, tipoPessoa) values (?, ?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+            preparedStatement.setString(1, nomePessoa);
+            preparedStatement.setString(2, emailPessoa);
+            preparedStatement.setString(3, cpfPessoa);
+            preparedStatement.setString(4, senhaPessoa);
+            preparedStatement.setInt(5, tipoPessoa);
+            try {
+                preparedStatement.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na execução do comando SQL");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro na preparação do comando SQL");
+        }
+    }
 }

@@ -11,4 +11,12 @@ public class PessoaService {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    public void cadastrarPessoa(String nomePessoa, String cpfPessoa, String emailPessoa, String senhaPessoa, int tipoPessoa) {
+        try {
+           new PessoaDAO().cadastrarPessoa(nomePessoa, cpfPessoa, emailPessoa, senhaPessoa, tipoPessoa);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
