@@ -41,6 +41,7 @@ public class ListarProdutos extends JFrame {
                 try {
                     produtoController.venderProduto(produto, qtdProdutoVenda);
                     JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+                    criarComponentes();
                 } catch (Exception exception) {
                     throw new RuntimeException(exception.getMessage());
                 }

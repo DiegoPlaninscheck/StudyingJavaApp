@@ -95,6 +95,7 @@ public class ProdutoDAO {
     public void venderProduto(Produto produto, Integer qtdProdutoVender) {
         if (produto.getQtdEstoque() < qtdProdutoVender) {
             JOptionPane.showMessageDialog(null, "Falta de produto em estoque!");
+            throw new RuntimeException("Falta de produto em estoque!");
         } else {
             produto.setQtdEstoque(produto.getQtdEstoque() - qtdProdutoVender);
             String sqlComando = "update produto set qtdEstoque = " +

@@ -21,7 +21,16 @@ public class ListarPessoas extends JFrame {
             new Menu(usuario);
         });
         editarPessoaButton.addActionListener(e -> {
-
+            int itemSelecionado = tabelaListaPessoas.getSelectedRow();
+            if (itemSelecionado != -1) {
+                String emailPessoa = (String) tabelaListaPessoas.getValueAt(itemSelecionado, 3);
+                Pessoa pessoaParaEditar = pessoaController.selecionarPorEmail(emailPessoa);
+                dispose();
+                new EditarPessoa(usuario, pessoaParaEditar);
+            } else {
+                JOptionPane.showMessageDialog(null, "É necessario " +
+                        "selecionar uma pessoa para editar");
+            }
         });
     }
 

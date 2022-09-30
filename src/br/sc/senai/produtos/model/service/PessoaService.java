@@ -16,13 +16,21 @@ public class PessoaService {
 
     public void cadastrarPessoa(String nomePessoa, String cpfPessoa, String emailPessoa, String senhaPessoa, int tipoPessoa) {
         try {
-           new PessoaDAO().cadastrarPessoa(nomePessoa, cpfPessoa, emailPessoa, senhaPessoa, tipoPessoa);
-        }catch (Exception e){
+            new PessoaDAO().cadastrarPessoa(nomePessoa, cpfPessoa, emailPessoa, senhaPessoa, tipoPessoa);
+        } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
     public Collection<Pessoa> selecionarTodasPessoas() {
         return new PessoaDAO().selecionarTodasPessoas();
+    }
+
+    public Pessoa selecionarPorEmail(String emailPessoa) {
+        return new PessoaDAO().buscarPorEmail(emailPessoa);
+    }
+
+    public void editarPessoa(Pessoa pessoaEditar, String nome, String email, String senha) {
+        new PessoaDAO().editarPessoa(pessoaEditar, nome, email, senha);
     }
 }

@@ -23,4 +23,12 @@ public class PessoaController {
     public Collection<Pessoa> selecionarTodasPessoas() {
         return pessoaService.selecionarTodasPessoas();
     }
+
+    public Pessoa selecionarPorEmail(String emailPessoa) {
+        return pessoaService.selecionarPorEmail(emailPessoa);
+    }
+
+    public void editarPessoa(Pessoa pessoaEditar, String nome, String email, String senha) {
+        pessoaService.editarPessoa(pessoaEditar, nome, email, senha);
+    }
 }

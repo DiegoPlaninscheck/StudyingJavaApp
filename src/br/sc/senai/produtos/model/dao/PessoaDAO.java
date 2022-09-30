@@ -83,4 +83,21 @@ public class PessoaDAO {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
     }
+
+    public void editarPessoa(Pessoa pessoaEditar, String nome, String email, String senha) {
+        String sqlComando = "update pessoa set nomePessoa = ?, emailPessoa = ?, senhaPessoa = ? where idPessoa = "
+                + pessoaEditar.getNumeroPessoa();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, senha);
+            try {
+                preparedStatement.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na execução do comando SQL");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro na preparação do comando SQL");
+        }
+    }
 }
