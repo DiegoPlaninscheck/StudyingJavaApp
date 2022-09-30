@@ -1,10 +1,7 @@
 package br.sc.senai.produtos.view;
 
 import br.sc.senai.produtos.controller.ProdutoController;
-import br.sc.senai.produtos.model.entities.Cliente;
-import br.sc.senai.produtos.model.entities.Funcionario;
-import br.sc.senai.produtos.model.entities.Pessoa;
-import br.sc.senai.produtos.model.entities.Produto;
+import br.sc.senai.produtos.model.entities.*;
 
 import javax.swing.*;
 
@@ -55,7 +52,7 @@ public class ListarProdutos extends JFrame {
 
     private void criarComponentes() {
 
-        if (usuario instanceof Funcionario) {
+        if (usuario instanceof Funcionario || usuario instanceof Gerente) {
             comprarProdutoButton.setVisible(false);
         }
         if (usuario instanceof Cliente) {
