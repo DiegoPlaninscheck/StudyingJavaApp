@@ -3,6 +3,8 @@ package br.sc.senai.produtos.model.service;
 import br.sc.senai.produtos.model.dao.PessoaDAO;
 import br.sc.senai.produtos.model.entities.Pessoa;
 
+import java.util.Collection;
+
 public class PessoaService {
     public Pessoa validaLogin(String email) {
         try {
@@ -18,5 +20,9 @@ public class PessoaService {
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    public Collection<Pessoa> selecionarTodasPessoas() {
+        return new PessoaDAO().selecionarTodasPessoas();
     }
 }

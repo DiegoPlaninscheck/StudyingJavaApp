@@ -7,6 +7,8 @@ import br.sc.senai.produtos.model.factory.PessoaFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class PessoaDAO {
 
@@ -57,6 +59,23 @@ public class PessoaDAO {
             preparedStatement.setInt(5, tipoPessoa);
             try {
                 preparedStatement.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na execução do comando SQL");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro na preparação do comando SQL");
+        }
+    }
+
+    public Collection<Pessoa> selecionarTodasPessoas() {
+        Collection<Pessoa> listaPessoas = new ArrayList<>();
+        String sqlComando = "select * from pessoa";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    listaPessoas.add(extrairObjeto(resultSet));
+                }
+                return listaPessoas;
             } catch (Exception e) {
                 throw new RuntimeException("Erro na execução do comando SQL");
             }

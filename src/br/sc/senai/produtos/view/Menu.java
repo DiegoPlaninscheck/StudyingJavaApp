@@ -9,6 +9,7 @@ public class Menu extends JFrame {
     private JButton listarProdutosButton;
     private JPanel menu;
     private JButton sairButton;
+    private JButton listarPessoasButton;
 
     Pessoa usuario;
 
@@ -22,6 +23,10 @@ public class Menu extends JFrame {
         listarProdutosButton.addActionListener(e -> {
             dispose();
             new ListarProdutos(usuario);
+        });
+        listarPessoasButton.addActionListener(e -> {
+            dispose();
+            new ListarPessoas(usuario);
         });
         cadastrarPessoaButton.addActionListener(e -> {
             dispose();
