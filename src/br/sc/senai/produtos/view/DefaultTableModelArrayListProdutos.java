@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class DefaultTableModelArrayList extends AbstractTableModel {
+public class DefaultTableModelArrayListProdutos extends AbstractTableModel {
 
     List<Produto> dados;
     String[] colunas;
 
-    public DefaultTableModelArrayList(Collection<Produto> lista) {
+    public DefaultTableModelArrayListProdutos(Collection<Produto> lista) {
         this.dados = new ArrayList<>(lista);
         colunas = new String[]{"Id", "Nome", "Quantidade", "Valor"};
     }

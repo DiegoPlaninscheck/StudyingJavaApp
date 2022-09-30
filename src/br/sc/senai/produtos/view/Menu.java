@@ -1,5 +1,6 @@
 package br.sc.senai.produtos.view;
 
+import br.sc.senai.produtos.model.entities.Funcionario;
 import br.sc.senai.produtos.model.entities.Pessoa;
 
 import javax.swing.*;
@@ -35,6 +36,9 @@ public class Menu extends JFrame {
     }
 
     private void criarComponenetes() {
+        if (usuario instanceof Funcionario) {
+            listarPessoasButton.setVisible(false);
+        }
         setContentPane(menu);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         pack();

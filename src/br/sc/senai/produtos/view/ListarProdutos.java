@@ -59,7 +59,7 @@ public class ListarProdutos extends JFrame {
             cadastrarProdutoButton.setVisible(false);
         }
 
-        tabelaProdutos.setModel(new DefaultTableModelArrayList(produtoController.selecionarTodosProdutos()));
+        tabelaProdutos.setModel(new DefaultTableModelArrayListProdutos(produtoController.selecionarTodosProdutos()));
 
         setContentPane(listaProdutos);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
