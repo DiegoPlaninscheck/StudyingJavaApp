@@ -12,13 +12,20 @@ import java.util.Collection;
 
 public class ProdutoDAO {
 
+    /**
+     * Classe de conexão do banco de dados
+     */
     Connection connection;
 
     public ProdutoDAO() {
         this.connection = new ConexaoFactory().conectaBD();
     }
 
-
+    /**
+     * Metodo que seleciona todos os produtos que estão cadastrados no banco de dados
+     *
+     * @author Diego Planinscheck
+     */
     public Collection<Produto> selecionarTodosProdutos() {
         Collection<Produto> listaProdutos = new ArrayList<>();
         String sqlComando = "select * from produto";
@@ -89,9 +96,7 @@ public class ProdutoDAO {
         if (produto.getQtdEstoque() < qtdProdutoVender) {
             JOptionPane.showMessageDialog(null, "Falta de produto em estoque!");
         } else {
-            System.out.println(produto.getQtdEstoque());
             produto.setQtdEstoque(produto.getQtdEstoque() - qtdProdutoVender);
-            System.out.println(produto.getQtdEstoque());
             String sqlComando = "update produto set qtdEstoque = " +
                     produto.getQtdEstoque() + " where idProduto = " + produto.getNumeroProduto();
             try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {

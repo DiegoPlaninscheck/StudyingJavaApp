@@ -30,12 +30,10 @@ public class PessoaDAO {
         } catch (Exception e) {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
-        System.out.println("pessoa");
         throw new RuntimeException("Algo deu ruim");
     }
 
     private Pessoa extrairObjeto(ResultSet resultSet) {
-
         try {
             return new PessoaFactory().getPessoa(resultSet.getInt("idPessoa"),
                     resultSet.getInt("tipoPessoa"),
