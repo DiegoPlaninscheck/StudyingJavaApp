@@ -31,4 +31,8 @@ public class PessoaController {
     public void editarPessoa(Pessoa pessoaEditar, String nome, String email, String senha) {
         pessoaService.editarPessoa(pessoaEditar, nome, email, senha);
     }
+
+    public void deletarPessoa(Pessoa pessoaEditar) {
+        pessoaService.deletarPessoa(pessoaEditar);
+    }
 }

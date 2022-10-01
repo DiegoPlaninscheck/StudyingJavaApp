@@ -33,7 +33,14 @@ public class EditarPessoa extends JFrame {
 
         });
         deletarPessoaButton.addActionListener(e -> {
-
+            try {
+                pessoaController.deletarPessoa(pessoaEditar);
+                JOptionPane.showMessageDialog(null, "Pessoa deletada com sucesso!");
+                dispose();
+                new ListarPessoas(pessoa);
+            } catch (Exception exception) {
+                throw new RuntimeException(exception.getMessage());
+            }
         });
 
     }

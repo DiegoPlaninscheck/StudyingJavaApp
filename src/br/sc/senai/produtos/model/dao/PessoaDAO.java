@@ -100,4 +100,18 @@ public class PessoaDAO {
             throw new RuntimeException("Erro na preparação do comando SQL");
         }
     }
+
+    public void deletarPessoa(Pessoa pessoaEditar) {
+        String sqlComando = "delete from pessoa where idPessoa = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlComando)) {
+            preparedStatement.setInt(1, pessoaEditar.getNumeroPessoa());
+            try {
+                preparedStatement.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("Erro na execução do comando SQL");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro na preparação do comando SQL");
+        }
+    }
 }

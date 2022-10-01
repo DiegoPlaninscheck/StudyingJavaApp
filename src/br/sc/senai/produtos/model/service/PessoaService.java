@@ -33,4 +33,8 @@ public class PessoaService {
     public void editarPessoa(Pessoa pessoaEditar, String nome, String email, String senha) {
         new PessoaDAO().editarPessoa(pessoaEditar, nome, email, senha);
     }
+
+    public void deletarPessoa(Pessoa pessoaEditar) {
+        new PessoaDAO().deletarPessoa(pessoaEditar);
+    }
 }
